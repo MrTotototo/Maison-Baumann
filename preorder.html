@@ -1,1 +1,27 @@
-<!DOCTYPE html><html><head><title>preorder.html</title></head><body><h1>preorder.html OK</h1></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Précommande — Maison Baumann</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="shop.html">Retour boutique</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="cart" style="padding: 3rem;">
+    <h1>Panier</h1>
+    <ul id="cart-list" style="margin: 2rem 0;"></ul>
+    <p id="total" style="margin-bottom: 2rem;"></p>
+    <button onclick="validateOrder()">Précommander</button>
+  </section>
+</body>
+</html>
