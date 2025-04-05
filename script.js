@@ -1,12 +1,25 @@
 document.addEventListener("DOMContentLoaded", function(){
-  // Détection d'appareil
+  // Ajout de classe selon l'appareil
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     document.body.classList.add("mobile");
   } else {
     document.body.classList.add("desktop");
   }
+  
+  // Gestion du menu hamburger
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const overlay = document.getElementById("overlay");
+  hamburger.addEventListener("click", function(){
+    mobileMenu.classList.toggle("active");
+    overlay.style.display = mobileMenu.classList.contains("active") ? "block" : "none";
+  });
+  overlay.addEventListener("click", function(){
+    mobileMenu.classList.remove("active");
+    overlay.style.display = "none";
+  });
 
-  /* ===== Gestion du panier ===== */
+  // Gestion du panier
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -29,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   });
 
-  /* ===== Slider Galerie (Desktop) ===== */
+  // Slider Galerie (Desktop)
   const galleryPrev = document.getElementById('gallery-prev');
   const galleryNext = document.getElementById('gallery-next');
   const galleryScroll = document.querySelector('.gallery-scroll');
@@ -44,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
-  /* ===== Slider Boutique (Desktop) ===== */
+  // Slider Boutique (Desktop)
   const shopPrev = document.getElementById('shop-prev');
   const shopNext = document.getElementById('shop-next');
   const productsContainer = document.querySelector('.products-container');
@@ -57,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
-  /* ===== Ambilight pour Galerie ===== */
+  // Ambilight pour Galerie (optionnel)
   const galleryItems = document.querySelectorAll('.gallery-item');
   galleryItems.forEach(item => {
     const img = item.querySelector('img');
@@ -66,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function(){
       item.style.setProperty('--ambilight-color', color);
     });
   });
-
   function getAverageColor(img) {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext && canvas.getContext('2d');
@@ -91,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function(){
     b = Math.floor(b / count);
     return `rgb(${r},${g},${b})`;
   }
-
   const style = document.createElement('style');
   style.innerHTML = `.gallery-item::before { background: var(--ambilight-color, #000); }`;
   document.head.appendChild(style);
