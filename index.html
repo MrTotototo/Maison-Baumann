@@ -6,26 +6,19 @@
   <title>Maison Baumann - Accueil</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
-  <style>
-    /* Vous pouvez conserver vos styles spécifiques ici ou dans styles.css */
-  </style>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Header commun avec hamburger -->
   <header>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="gallery.html">Collections</a></li>
-        <li><a href="about.html">À propos</a></li>
-        <li><a href="store.html">Boutique</a></li>
-        <li><a href="cart.html">Panier</a></li>
-      </ul>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">Maison Baumann</a>
+      </div>
       <div id="hamburger" class="hamburger">&#9776;</div>
-    </nav>
+    </div>
   </header>
   <div id="overlay" class="overlay"></div>
-  <div id="mobile-menu" class="mobile-menu">
+  <nav id="mobile-menu" class="mobile-menu">
     <ul>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="gallery.html">Collections</a></li>
@@ -33,9 +26,9 @@
       <li><a href="store.html">Boutique</a></li>
       <li><a href="cart.html">Panier</a></li>
     </ul>
-  </div>
-  
-  <!-- Section Héros -->
+  </nav>
+
+  <!-- Section Héros avec vidéo en plein écran -->
   <section class="hero">
     <div class="video-container">
       <video class="bg-video" autoplay muted loop playsinline>
@@ -47,7 +40,7 @@
       <h1>Maison Baumann</h1>
     </div>
   </section>
-  
+
   <footer>
     <p>&copy; 2025 Maison Baumann. Tous droits réservés.</p>
   </footer>
