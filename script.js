@@ -7,15 +7,10 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   /* ===== Gestion du panier ===== */
-  // Récupérer le panier depuis localStorage ou créer un tableau vide
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  // Fonction pour sauvegarder le panier dans localStorage
   function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
-
-  // Ajout d'un produit au panier
   const addToCartButtons = document.querySelectorAll('.add-to-cart');
   addToCartButtons.forEach(button => {
     button.addEventListener('click', function(){
@@ -23,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function(){
       const id = product.getAttribute('data-id');
       const name = product.getAttribute('data-name');
       const price = parseFloat(product.getAttribute('data-price'));
-      // Vérifier si le produit est déjà dans le panier
       const existing = cart.find(item => item.id === id);
       if(existing){
         existing.quantity += 1;
@@ -41,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function(){
   const galleryScroll = document.querySelector('.gallery-scroll');
   if(galleryPrev && galleryNext && galleryScroll) {
     galleryPrev.addEventListener('click', function(){
-      // Défile d'une largeur égale à la largeur d'une image
       const imgWidth = galleryScroll.querySelector('.gallery-item').offsetWidth;
       galleryScroll.scrollBy({ left: -imgWidth, behavior: 'smooth' });
     });
@@ -65,26 +58,19 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   /* ===== Ambilight pour Galerie ===== */
-  // Pour chaque image de galerie, calculer une couleur moyenne et l'appliquer en fond
   const galleryItems = document.querySelectorAll('.gallery-item');
   galleryItems.forEach(item => {
     const img = item.querySelector('img');
-    // Une fois l'image chargée, calcule la couleur moyenne
     img.addEventListener('load', function(){
       const color = getAverageColor(img);
-      // Appliquer la couleur en fond sur le pseudo-élément via une propriété CSS personnalisée
       item.style.setProperty('--ambilight-color', color);
     });
   });
 
-  /* Fonction pour calculer une couleur moyenne d'une image */
   function getAverageColor(img) {
-    // Créer un canvas
     const canvas = document.createElement('canvas');
     const context = canvas.getContext && canvas.getContext('2d');
     if (!context) return '#000';
-    
-    // Réduire la taille pour accélérer le calcul
     const width = canvas.width = img.naturalWidth / 10;
     const height = canvas.height = img.naturalHeight / 10;
     context.drawImage(img, 0, 0, width, height);
@@ -100,20 +86,13 @@ document.addEventListener("DOMContentLoaded", function(){
       b += data.data[i+2];
       count++;
     }
-    // Moyenne
     r = Math.floor(r / count);
     g = Math.floor(g / count);
     b = Math.floor(b / count);
     return `rgb(${r},${g},${b})`;
   }
 
-  /* Mettre à jour le style des pseudo-éléments ambilight en utilisant la variable CSS */
-  // On ajoute une règle dynamique pour .gallery-item::before
   const style = document.createElement('style');
-  style.innerHTML = `
-    .gallery-item::before {
-      background: var(--ambilight-color, #000);
-    }
-  `;
+  style.innerHTML = `.gallery-item::before { background: var(--ambilight-color, #000); }`;
   document.head.appendChild(style);
 });
