@@ -6,13 +6,13 @@
   <title>Maison Baumann - Accueil</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Réinitialisation de base */
+    /* --- Réinitialisation de base --- */
     body, html {
       margin: 0;
       padding: 0;
     }
     
-    /* Navigation & Menu Mobile */
+    /* --- Navigation & Menu Mobile --- */
     header {
       position: fixed;
       top: 0;
@@ -70,7 +70,7 @@
       z-index: 1040;
     }
     
-    /* Section Héros (Desktop) */
+    /* --- Section Héros (Desktop et par défaut) --- */
     .hero {
       position: relative;
       width: 100%;
@@ -84,7 +84,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;
+      z-index: 1;
     }
     .bg-video {
       width: 100%;
@@ -94,7 +94,6 @@
       display: block;
       border: none;
     }
-    /* Titre centré sur Desktop */
     .hero-title {
       position: absolute;
       top: 50%;
@@ -106,7 +105,6 @@
       text-shadow: 0 0 5px rgba(0,0,0,0.7);
       white-space: nowrap;
     }
-    
     footer {
       text-align: center;
       padding: 20px;
@@ -119,45 +117,25 @@
       font-size: 1rem;
     }
     
-    /* Adaptations pour Mobile */
+    /* --- Adaptations pour Mobile --- */
     @media only screen and (max-width: 768px) {
+      /* Appliquer le collage en fond sur toute la section héro */
       .hero {
-        /* Utilisation du collage en fond */
-        height: 100vh;
         background: url('assets/collage_site.jpg') center center / cover no-repeat;
-        position: relative;
       }
-      /* Vidéo centrée sur toute la zone */
-      .video-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 0;
-      }
+      /* Conserver la vidéo en plein écran comme avant */
       .bg-video {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         object-position: center;
       }
-      /* Titre en overlay, centré sur la vidéo, avec une taille plus petite */
+      /* Réduire la taille du titre et le centrer sur la vidéo */
       .hero-title {
-        position: absolute;
+        font-size: 1rem;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 0.6rem;
-        color: #fff;
-        z-index: 2;
-        text-align: center;
-        margin: 0;
       }
-      /* Menu Mobile */
+      /* Masquer le menu classique */
       nav .menu {
         display: none;
       }
