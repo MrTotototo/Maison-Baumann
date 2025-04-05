@@ -6,42 +6,34 @@
   <title>Maison Baumann - Accueil</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* ================================
-       Styles de la section Héros & Ambilight
-    ==================================== */
+    /* Section Héros (Desktop) */
     .hero {
       position: relative;
       width: 100%;
       height: 100vh;
       overflow: hidden;
     }
-    /* Ambilight : fond dégradé flouté derrière la vidéo */
     .ambilight {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #222, #444); /* Couleurs à ajuster */
+      background: linear-gradient(135deg, #222, #444); /* Couleurs ambilight à ajuster */
       filter: blur(30px);
       z-index: 0;
     }
-    /* Conteneur vidéo */
     .video-container {
       position: relative;
       width: 100%;
       height: 100%;
       z-index: 1;
     }
-    /* Vidéo sur desktop : pleine largeur, centrée */
     .bg-video {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    /* ================================
-       Titre de la page (placé au-dessus de la vidéo)
-    ==================================== */
     .hero-overlay {
       position: absolute;
       top: 10px;
@@ -52,125 +44,31 @@
       font-size: 2rem;
       text-shadow: 0 0 5px rgba(0,0,0,0.7);
     }
-    /* ================================
-       Menu de Navigation
-    ==================================== */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(0,0,0,0.5);
-    }
-    nav .menu {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      padding: 1rem;
-    }
-    nav .menu li {
-      margin: 0 1rem;
-    }
-    nav .menu a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-    }
-    /* Icône hamburger pour mobile */
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      font-size: 2rem;
-      color: #fff;
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      z-index: 3;
-    }
-    /* Menu mobile (panneau latéral) */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 70%;
-      height: 100%;
-      background: #000;
-      z-index: 3;
-      padding: 20px;
-      overflow-y: auto;
-    }
-    .mobile-menu.active {
-      display: block;
-    }
-    .mobile-menu ul {
-      list-style: none;
-      padding: 0;
-    }
-    .mobile-menu li {
-      margin: 20px 0;
-    }
-    .mobile-menu a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.5rem;
-    }
-    /* Fond d'écran assombri quand le menu mobile est ouvert */
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 2;
-    }
     
-    /* ================================
-       Adaptations pour Mobile
-    ==================================== */
+    /* Adaptations pour Mobile */
     @media only screen and (max-width: 768px) {
-      /* Réduire la hauteur de la section Héros */
+      /* Agrandir la zone vidéo pour un meilleur rendu */
       .hero {
-        height: 25vh;
+        height: 40vh; /* Augmenté de 25vh à 40vh */
       }
-      /* Vidéo sur mobile : afficher toute l'image sans zoom */
+      /* Afficher la vidéo sans zoom en mode mobile,
+         en la positionnant de façon à ce que le bas soit centré */
       .bg-video {
         object-fit: contain;
+        object-position: center bottom;
+        width: 100%;
+        height: 100%;
       }
-      /* Masquer le menu de navigation classique */
-      nav .menu {
-        display: none;
-      }
-      /* Afficher l'icône hamburger */
-      .hamburger {
-        display: block;
+      /* Réduire la taille du titre */
+      .hero-overlay h1 {
+        font-size: 1.5rem;
       }
     }
   </style>
-  <script>
-    // Gestion du menu mobile
-    document.addEventListener("DOMContentLoaded", function() {
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const overlay = document.getElementById('overlay');
-
-      hamburger.addEventListener('click', function() {
-        mobileMenu.classList.toggle('active');
-        overlay.style.display = mobileMenu.classList.contains('active') ? 'block' : 'none';
-      });
-
-      overlay.addEventListener('click', function() {
-        mobileMenu.classList.remove('active');
-        overlay.style.display = 'none';
-      });
-    });
-  </script>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Navigation minimaliste -->
   <header>
     <nav>
       <ul class="menu">
@@ -180,40 +78,23 @@
         <li><a href="store.html">Boutique</a></li>
         <li><a href="cart.html">Panier</a></li>
       </ul>
-      <!-- Icône hamburger visible sur mobile -->
-      <div id="hamburger" class="hamburger">&#9776;</div>
     </nav>
   </header>
-  <!-- Fond assombri lors de l'ouverture du menu mobile -->
-  <div id="overlay" class="overlay"></div>
-  <!-- Menu mobile -->
-  <div id="mobile-menu" class="mobile-menu">
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="gallery.html">Collections</a></li>
-      <li><a href="about.html">À propos</a></li>
-      <li><a href="store.html">Boutique</a></li>
-      <li><a href="cart.html">Panier</a></li>
-    </ul>
-  </div>
-  
-  <!-- Section Héros -->
+
+  <!-- Section Héros avec vidéo et ambilight -->
   <section class="hero">
-    <!-- Ambilight simulé -->
     <div class="ambilight"></div>
-    <!-- Conteneur vidéo -->
     <div class="video-container">
       <video class="bg-video" autoplay muted loop playsinline>
         <source src="BAUMANN_FULL.mp4" type="video/mp4">
         Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
     </div>
-    <!-- Titre placé au-dessus de la vidéo -->
     <div class="hero-overlay">
       <h1>Maison Baumann</h1>
     </div>
   </section>
-  
+
   <footer>
     <p>&copy; 2025 Maison Baumann. Tous droits réservés.</p>
   </footer>
