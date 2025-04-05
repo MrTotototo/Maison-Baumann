@@ -6,13 +6,13 @@
   <title>Maison Baumann - Accueil</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Réinitialisation de base --- */
+    /* Réinitialisation de base */
     body, html {
       margin: 0;
       padding: 0;
     }
     
-    /* --- Navigation & Menu Mobile --- */
+    /* Navigation & Menu Mobile */
     header {
       position: fixed;
       top: 0;
@@ -70,7 +70,7 @@
       z-index: 1040;
     }
     
-    /* --- Section Héros (Desktop) --- */
+    /* Section Héros (Desktop) */
     .hero {
       position: relative;
       width: 100%;
@@ -94,7 +94,7 @@
       display: block;
       border: none;
     }
-    /* Titre centré sur desktop */
+    /* Titre centré sur Desktop */
     .hero-title {
       position: absolute;
       top: 50%;
@@ -106,6 +106,7 @@
       text-shadow: 0 0 5px rgba(0,0,0,0.7);
       white-space: nowrap;
     }
+    
     footer {
       text-align: center;
       padding: 20px;
@@ -118,29 +119,25 @@
       font-size: 1rem;
     }
     
-    /* --- Adaptations pour Mobile --- */
+    /* Adaptations pour Mobile */
     @media only screen and (max-width: 768px) {
-      /* Utiliser toute la hauteur du viewport pour centrer le contenu */
       .hero {
+        /* Utilisation du collage en fond */
         height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      /* Zone pour le titre : affiché en haut et centré */
-      .hero-title {
-        flex: 0 0 auto;
-        font-size: 0.8rem; /* Titre réduit */
-        text-align: center;
-        margin: 10px 0;
+        background: url('assets/collage_site.jpg') center center / cover no-repeat;
         position: relative;
-        transform: none;
       }
-      /* La zone vidéo occupe le reste de l'espace et centre la vidéo */
+      /* Vidéo centrée sur toute la zone */
       .video-container {
-        flex: 1 1 auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 0;
       }
       .bg-video {
         max-width: 100%;
@@ -148,7 +145,19 @@
         object-fit: contain;
         object-position: center;
       }
-      /* Masquer le menu classique et afficher l'icône hamburger */
+      /* Titre en overlay, centré sur la vidéo, avec une taille plus petite */
+      .hero-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0.6rem;
+        color: #fff;
+        z-index: 2;
+        text-align: center;
+        margin: 0;
+      }
+      /* Menu Mobile */
       nav .menu {
         display: none;
       }
@@ -207,14 +216,14 @@
   
   <!-- Section Héros -->
   <section class="hero">
-    <div class="hero-title">
-      <h1>Maison Baumann</h1>
-    </div>
     <div class="video-container">
       <video class="bg-video" autoplay muted loop playsinline>
         <source src="BAUMANN_FULL.mp4" type="video/mp4">
         Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
+    </div>
+    <div class="hero-title">
+      <h1>Maison Baumann</h1>
     </div>
   </section>
   
