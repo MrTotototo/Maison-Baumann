@@ -8,21 +8,17 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Header commun -->
   <header>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="gallery.html">Collections</a></li>
-        <li><a href="about.html">À propos</a></li>
-        <li><a href="store.html">Boutique</a></li>
-        <li><a href="cart.html">Panier</a></li>
-      </ul>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">Maison Baumann</a>
+      </div>
       <div id="hamburger" class="hamburger">&#9776;</div>
-    </nav>
+    </div>
   </header>
   <div id="overlay" class="overlay"></div>
-  <div id="mobile-menu" class="mobile-menu">
+  <nav id="mobile-menu" class="mobile-menu">
     <ul>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="gallery.html">Collections</a></li>
@@ -30,12 +26,11 @@
       <li><a href="store.html">Boutique</a></li>
       <li><a href="cart.html">Panier</a></li>
     </ul>
-  </div>
+  </nav>
 
-  <!-- Titre de la page -->
+  <!-- Contenu Galerie -->
   <main class="gallery">
     <h1 class="gallery-title">MAISON BAUMANN 2024/2025</h1>
-    <!-- Conteneur slider -->
     <div class="gallery-wrapper">
       <button class="gallery-arrow left desktop" id="gallery-prev">&lt;</button>
       <div class="gallery-scroll">
