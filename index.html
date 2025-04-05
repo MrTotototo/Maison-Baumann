@@ -6,13 +6,13 @@
   <title>Maison Baumann - Accueil</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Réinitialisation de base */
+    /* === Réinitialisation de base === */
     body, html {
       margin: 0;
       padding: 0;
     }
-    
-    /* Navigation & Menu Mobile */
+
+    /* === Navigation & Menu Mobile === */
     header {
       position: fixed;
       top: 0;
@@ -69,8 +69,8 @@
       background: rgba(0,0,0,0.5);
       z-index: 1040;
     }
-    
-    /* Section Héros (Desktop) */
+
+    /* === Section Héros (Desktop) === */
     .hero {
       position: relative;
       width: 100%;
@@ -116,16 +116,16 @@
     footer p {
       font-size: 1rem;
     }
-    
-    /* Adaptations pour Mobile */
+
+    /* === Adaptations pour Mobile === */
     @media only screen and (max-width: 768px) {
+      /* Afficher le collage en fond en pleine résolution */
       .hero {
-        /* Utilisation du collage en fond en plein écran */
         background: url('assets/collage_site.jpg') center center / cover no-repeat;
         height: 100vh;
         position: relative;
       }
-      /* Vidéo centrée en petit au milieu de l'écran */
+      /* Le conteneur vidéo est réduit pour laisser voir le collage en arrière-plan */
       .video-container {
         width: 80%;
         height: 40%;
@@ -141,10 +141,10 @@
         object-fit: contain;
         object-position: center;
       }
-      /* Titre positionné juste au-dessus du conteneur vidéo, centré horizontalement */
+      /* Le titre est placé juste au-dessus du conteneur vidéo */
       .hero-title {
         position: absolute;
-        top: 25%; /* Ajustez cette valeur si nécessaire */
+        top: 25%;  /* Ajustez cette valeur pour placer le titre juste au-dessus de la vidéo */
         left: 50%;
         transform: translateX(-50%);
         font-size: 0.8rem;
@@ -153,6 +153,7 @@
         text-align: center;
         margin: 0;
       }
+      /* Masquer le menu classique, afficher l'icône hamburger */
       nav .menu {
         display: none;
       }
@@ -182,7 +183,6 @@
       });
     });
   </script>
-  <script src="script.js" defer></script>
 </head>
 <body>
   <!-- Navigation -->
