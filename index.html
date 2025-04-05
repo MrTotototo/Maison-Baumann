@@ -28,6 +28,7 @@
       display: flex;
       justify-content: flex-end;
       padding: 1rem;
+      background: transparent; /* Suppression de la ligne noire/grise */
     }
     /* L'icône hamburger toujours affichée en haut à droite */
     .hamburger {
@@ -118,7 +119,7 @@
       transform: translate(-50%, -50%);
       z-index: 2;
       color: #fff;
-      font-size: 3rem;
+      font-size: 2rem; /* Taille réduite pour un style élégant */
       text-shadow: 0 0 5px rgba(0,0,0,0.7);
       white-space: nowrap;
     }
@@ -136,10 +137,18 @@
       color: #fff;
     }
     
-    /* === Adaptations éventuelles (si besoin) === */
+    /* === Adaptations pour mobile === */
     @media only screen and (max-width: 768px) {
       .hero-title {
-        font-size: 1.5rem;
+        font-size: 1.5rem; /* Titre encore un peu plus petit sur mobile */
+      }
+      /* Ajustement du menu latéral */
+      .side-menu {
+        width: 200px; /* Menu plus étroit pour mobile */
+      }
+      .side-menu ul {
+        text-align: right;
+        padding-right: 1rem; /* Les onglets sont plus proches du bord droit */
       }
       footer {
         font-size: 0.6rem;
