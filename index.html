@@ -71,7 +71,7 @@
       z-index: 1040;
     }
 
-    /* === Section Héros (Vidéo en plein écran) === */
+    /* === Section Héros (Desktop) === */
     .hero {
       position: relative;
       width: 100%;
@@ -106,7 +106,6 @@
       text-shadow: 0 0 5px rgba(0,0,0,0.7);
       white-space: nowrap;
     }
-
     footer {
       text-align: center;
       padding: 20px;
@@ -124,18 +123,26 @@
 
     /* === Adaptations pour Mobile === */
     @media only screen and (max-width: 768px) {
-      /* Vidéo en plein écran reste identique */
+      /* Pour la partie onglets vidéo, on remplace le fond noir par un gris transparent */
       .hero {
+        background: rgba(128, 128, 128, 0.5);
         height: 100vh;
       }
+      /* La vidéo reste en plein écran sur mobile */
+      .video-container {
+        display: block;
+      }
       .bg-video {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         object-position: center;
       }
-      /* Réduire légèrement la taille du titre */
+      /* Réduction du titre */
       .hero-title {
         font-size: 1rem;
       }
+      /* Menu mobile */
       nav .menu {
         display: none;
       }
