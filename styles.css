@@ -10,6 +10,7 @@ body {
   font-family: Arial, sans-serif;
   color: #fff;
   background-color: #000;
+  line-height: 1.4; /* interlignage réduit */
 }
 
 /* Navigation */
@@ -51,6 +52,15 @@ header {
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
+/* Sur mobile, on ajuste la vidéo pour qu'elle soit entièrement visible */
+body.mobile .bg-video {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transform: none;
+}
 .hero-overlay {
   position: relative;
   z-index: 1;
@@ -63,20 +73,64 @@ header {
 }
 .hero-overlay p {}
 
-/* Galerie */
-.gallery .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-  padding: 120px 20px 20px;
-}
-.gallery .grid img {
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.8);
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  display: block;
-  transition: transform 0.3s ease;
 }
-.gallery .grid img:hover {
-  transform: scale(1.05);
+footer p {
+  font-size: 0.8rem; /* texte réduit */
+}
+
+/* Collections - galerie en défilement horizontal */
+.gallery {
+  padding: 120px 20px 20px;
+  text-align: center;
+}
+.gallery-title {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+.gallery-wrapper {
+  position: relative;
+}
+.gallery-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px;
+  padding: 10px;
+}
+.gallery-scroll img {
+  flex-shrink: 0;
+  width: 300px;
+  height: auto;
+}
+
+/* Flèches pour galerie sur desktop */
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.5);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  display: none;
+}
+body.desktop .gallery-arrow {
+  display: block;
+}
+.gallery-arrow.left {
+  left: 10px;
+}
+.gallery-arrow.right {
+  right: 10px;
 }
 
 /* À propos */
@@ -89,13 +143,12 @@ header {
 }
 .about p {
   margin-bottom: 1rem;
-  line-height: 1.6;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Boutique */
+/* Boutique - produits en slider horizontal */
 .store {
   padding: 120px 20px 20px;
   text-align: center;
@@ -103,21 +156,33 @@ header {
 .store h2 {
   margin-bottom: 20px;
 }
+.shop-wrapper {
+  position: relative;
+}
 .products-container {
   display: flex;
   overflow-x: auto;
-  padding: 20px;
+  scroll-behavior: smooth;
   gap: 20px;
+  padding: 10px;
 }
 .product {
   flex: 0 0 auto;
+  width: 300px;
   background: #111;
   padding: 10px;
   border-radius: 5px;
-  width: 250px;
 }
-.product img {
-  width: 100%;
+.product-images {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.product-images img {
+  flex-shrink: 0;
+  width: 90px;
   height: auto;
 }
 .product h3 {
@@ -136,6 +201,28 @@ header {
   font-weight: bold;
 }
 
+/* Flèches pour boutique sur desktop */
+.shop-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.5);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  display: none;
+}
+body.desktop .shop-arrow {
+  display: block;
+}
+.shop-arrow.left {
+  left: 10px;
+}
+.shop-arrow.right {
+  right: 10px;
+}
+
 /* Panier */
 .cart {
   padding: 120px 20px 20px;
@@ -143,9 +230,8 @@ header {
 }
 .cart table {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   border-collapse: collapse;
-  margin-bottom: 20px;
 }
 .cart table, .cart th, .cart td {
   border: 1px solid #fff;
@@ -165,51 +251,20 @@ header {
   cursor: pointer;
 }
 
-/* Pied de page */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(0,0,0,0.8);
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-/* Mise en page pour Desktop */
-body.desktop .hero-overlay h1 {
-  font-size: 4rem;
-}
-body.desktop .hero-overlay p {
-  font-size: 1.75rem;
-}
-body.desktop .menu {
-  flex-direction: row;
-}
-
-/* Mise en page pour Mobile */
-body.mobile .hero-overlay h1 {
-  font-size: 2.5rem;
-}
-body.mobile .hero-overlay p {
-  font-size: 1.25rem;
-}
-body.mobile .menu {
-  flex-direction: column;
-  padding: 1rem;
-}
-body.mobile .menu li {
-  margin: 0.5rem 0;
-}
-body.mobile .gallery .grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-body.mobile .store .products-container {
-  flex-direction: column;
-  align-items: center;
-}
-body.mobile .store .product {
-  width: 90%;
-}
-body.mobile footer {
-  position: relative;
+/* Adaptations mobiles */
+@media (max-width: 768px) {
+  body.mobile .menu {
+    flex-direction: column;
+  }
+  body.mobile .menu li {
+    margin: 0.5rem 0;
+  }
+  /* Pour la galerie mobile, le scroll suffit, pas de flèches */
+  body.mobile .gallery-arrow {
+    display: none;
+  }
+  /* Pour la boutique mobile, les flèches sont cachées */
+  body.mobile .shop-arrow {
+    display: none;
+  }
 }
