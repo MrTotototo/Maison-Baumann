@@ -15,7 +15,7 @@
       width: 100%;
       height: 100%;
       font-family: Arial, sans-serif;
-      /* Fond remplacé par l'image collage_site.jpg */
+      /* Fond avec l'image collage_site.jpg */
       background: url('collage_site.jpg') no-repeat center center fixed;
       background-size: cover;
     }
@@ -90,13 +90,16 @@
       visibility: visible;
     }
     
-    /* === Contenu principal centré === */
+    /* === Contenu principal centré verticalement et horizontalement === */
     main.about {
-      padding: 4rem 2rem 2rem; /* espace en haut pour le header */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-      color: #fff; /* couleur du texte adaptée au fond */
+      height: 100vh; /* occupe toute la hauteur de la fenêtre */
+      padding: 0 2rem;
+      color: #fff;
     }
     main.about h2 {
       margin-bottom: 1rem;
