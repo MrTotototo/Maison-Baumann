@@ -70,7 +70,7 @@
       z-index: 1040;
     }
     
-    /* --- Section Héros (Desktop) --- */
+    /* --- Section Héros pour Desktop --- */
     .hero {
       position: relative;
       width: 100%;
@@ -121,28 +121,43 @@
     
     /* --- Adaptations pour Mobile --- */
     @media only screen and (max-width: 768px) {
-      /* Utiliser le collage en fond en pleine couverture */
+      /* Utiliser le collage en fond en plein écran */
       .hero {
         background: url('collage_site.jpg') center center / cover no-repeat;
         height: 100vh;
         position: relative;
       }
-      /* Masquer la vidéo sur mobile */
+      /* Afficher une petite vidéo centrée, en 16:9 */
       .video-container {
-        display: none;
-      }
-      /* Titre centré sur le fond (avec une taille réduite) */
-      .hero-title {
+        display: block;
+        width: 80%;
+        /* Utilisation de l'attribut CSS aspect-ratio (si supporté) pour maintenir 16:9 */
+        aspect-ratio: 16 / 9;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1rem;
-        color: #fff;
         z-index: 2;
+      }
+      .bg-video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+      /* Placer le titre juste au-dessus de la vidéo */
+      .hero-title {
+        position: absolute;
+        top: calc(50% - (80% * 9/32) - 0.5rem); /* Calcul approximatif : vidéo hauteur = (80% * 9/16), on place le titre juste au-dessus */
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        color: #fff;
+        z-index: 3;
         text-align: center;
         margin: 0;
       }
+      /* Menu Mobile */
       nav .menu {
         display: none;
       }
@@ -172,6 +187,7 @@
       });
     });
   </script>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <!-- Navigation -->
@@ -200,13 +216,14 @@
   
   <!-- Section Héros -->
   <section class="hero">
-    <!-- Sur desktop, on affiche la vidéo -->
+    <!-- Sur Desktop, la vidéo occupe tout l'écran -->
     <div class="video-container">
       <video class="bg-video" autoplay muted loop playsinline>
         <source src="BAUMANN_FULL.mp4" type="video/mp4">
         Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
     </div>
+    <!-- Titre (visible sur Desktop et Mobile) -->
     <div class="hero-title">
       <h1>Maison Baumann</h1>
     </div>
