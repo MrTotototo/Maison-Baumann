@@ -6,13 +6,13 @@
   <title>Maison Baumann - Accueil</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* === Réinitialisation de base === */
+    /* --- Réinitialisation de base --- */
     body, html {
       margin: 0;
       padding: 0;
     }
-
-    /* === Navigation & Menu Mobile === */
+    
+    /* --- Navigation & Menu Mobile --- */
     header {
       position: fixed;
       top: 0;
@@ -69,8 +69,8 @@
       background: rgba(0,0,0,0.5);
       z-index: 1040;
     }
-
-    /* === Section Héros (Desktop) === */
+    
+    /* --- Section Héros (Desktop) --- */
     .hero {
       position: relative;
       width: 100%;
@@ -115,45 +115,28 @@
     }
     footer p {
       font-size: 1rem;
+      margin: 0;
+      color: #fff;
     }
-
-    /* === Adaptations pour Mobile === */
+    
+    /* --- Adaptations pour Mobile --- */
     @media only screen and (max-width: 768px) {
-      /* Afficher le collage en fond en pleine résolution */
+      /* Remplace la vidéo par le collage en fond */
       .hero {
         background: url('assets/collage_site.jpg') center center / cover no-repeat;
-        height: 100vh;
-        position: relative;
       }
-      /* Le conteneur vidéo est réduit pour laisser voir le collage en arrière-plan */
+      /* Masquer la vidéo sur mobile */
       .video-container {
-        width: 80%;
-        height: 40%;
-        position: absolute;
+        display: none;
+      }
+      /* Ajuster le titre pour mobile */
+      .hero-title {
+        font-size: 1rem;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: 1;
       }
-      .bg-video {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
-      }
-      /* Le titre est placé juste au-dessus du conteneur vidéo */
-      .hero-title {
-        position: absolute;
-        top: 25%;  /* Ajustez cette valeur pour placer le titre juste au-dessus de la vidéo */
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.8rem;
-        color: #fff;
-        z-index: 2;
-        text-align: center;
-        margin: 0;
-      }
-      /* Masquer le menu classique, afficher l'icône hamburger */
+      /* Masquer le menu classique et afficher l'icône hamburger */
       nav .menu {
         display: none;
       }
@@ -211,6 +194,7 @@
   
   <!-- Section Héros -->
   <section class="hero">
+    <!-- Sur desktop, on affiche la vidéo -->
     <div class="video-container">
       <video class="bg-video" autoplay muted loop playsinline>
         <source src="BAUMANN_FULL.mp4" type="video/mp4">
