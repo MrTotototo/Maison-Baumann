@@ -121,22 +121,28 @@
     
     /* --- Adaptations pour Mobile --- */
     @media only screen and (max-width: 768px) {
-      /* Remplace la vidéo par le collage en fond */
+      /* Utiliser le collage en fond en pleine couverture */
       .hero {
-        background: url(Maison-Baumann/collage_site.jpg') center center / cover no-repeat;
+        background: url('collage_site.jpg') center center / cover no-repeat;
+        height: 100vh;
+        position: relative;
       }
       /* Masquer la vidéo sur mobile */
       .video-container {
         display: none;
       }
-      /* Ajuster le titre pour mobile */
+      /* Titre centré sur le fond (avec une taille réduite) */
       .hero-title {
-        font-size: 1rem;
+        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        font-size: 1rem;
+        color: #fff;
+        z-index: 2;
+        text-align: center;
+        margin: 0;
       }
-      /* Masquer le menu classique et afficher l'icône hamburger */
       nav .menu {
         display: none;
       }
