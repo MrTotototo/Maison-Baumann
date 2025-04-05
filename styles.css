@@ -52,18 +52,6 @@ header {
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
-/* Sur mobile, on réduit la hauteur de la section héros */
-body.mobile .hero {
-  height: 20vh; /* hauteur réduite, ajustable selon vos besoins */
-  position: relative;
-  overflow: hidden;
-}
-  /* La vidéo occupe toute la zone du héros et s'adapte sans être zoomée */
-body.mobile .bg-video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
 .hero-overlay {
   position: relative;
   z-index: 1;
