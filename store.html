@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
   <style>
-    /* Styles spécifiques pour la page Boutique */
+    /* Styles spécifiques pour la Boutique */
     .store {
-      background-color: #222; /* Fond sombre pour contraster avec les produits */
+      background-color: #222;
       padding: 120px 20px 20px;
       min-height: 100vh;
     }
@@ -51,7 +51,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-    /* Flèches de navigation (Desktop uniquement) */
     .shop-arrow {
       position: absolute;
       top: 50%;
@@ -73,7 +72,6 @@
     .shop-arrow.right {
       right: 10px;
     }
-    /* Adaptations mobiles : cacher les flèches */
     @media (max-width: 768px) {
       .shop-arrow {
         display: none;
@@ -82,21 +80,17 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Header commun -->
   <header>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="gallery.html">Collections</a></li>
-        <li><a href="about.html">À propos</a></li>
-        <li><a href="store.html">Boutique</a></li>
-        <li><a href="cart.html">Panier</a></li>
-      </ul>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">Maison Baumann</a>
+      </div>
       <div id="hamburger" class="hamburger">&#9776;</div>
-    </nav>
+    </div>
   </header>
   <div id="overlay" class="overlay"></div>
-  <div id="mobile-menu" class="mobile-menu">
+  <nav id="mobile-menu" class="mobile-menu">
     <ul>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="gallery.html">Collections</a></li>
@@ -104,7 +98,7 @@
       <li><a href="store.html">Boutique</a></li>
       <li><a href="cart.html">Panier</a></li>
     </ul>
-  </div>
+  </nav>
   
   <!-- Section Boutique -->
   <main class="store">
@@ -149,7 +143,7 @@
       <button class="shop-arrow right desktop" id="shop-next">&gt;</button>
     </div>
   </main>
-
+  
   <footer>
     <p>&copy; 2025 Maison Baumann. Tous droits réservés.</p>
   </footer>
