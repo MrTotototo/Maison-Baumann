@@ -6,6 +6,80 @@
   <title>Maison Baumann - Boutique</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <style>
+    /* Styles spécifiques pour la page Boutique */
+    .store {
+      background-color: #222; /* Fond sombre pour contraster avec les produits */
+      padding: 120px 20px 20px;
+      min-height: 100vh;
+    }
+    .store h2 {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .shop-wrapper {
+      position: relative;
+    }
+    .products-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding: 10px;
+    }
+    .product {
+      flex: 0 0 auto;
+      width: 300px;
+      background: #333;
+      padding: 10px;
+      border-radius: 5px;
+      color: #fff;
+    }
+    .product h3 {
+      margin: 10px 0;
+    }
+    .price {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .add-to-cart {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    /* Flèches de navigation (Desktop uniquement) */
+    .shop-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.5);
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      font-size: 2rem;
+      display: none;
+      z-index: 2;
+    }
+    body.desktop .shop-arrow {
+      display: block;
+    }
+    .shop-arrow.left {
+      left: 10px;
+    }
+    .shop-arrow.right {
+      right: 10px;
+    }
+    /* Adaptations mobiles : cacher les flèches */
+    @media (max-width: 768px) {
+      .shop-arrow {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -18,10 +92,21 @@
         <li><a href="store.html">Boutique</a></li>
         <li><a href="cart.html">Panier</a></li>
       </ul>
+      <div id="hamburger" class="hamburger">&#9776;</div>
     </nav>
   </header>
-
-  <!-- Boutique -->
+  <div id="overlay" class="overlay"></div>
+  <div id="mobile-menu" class="mobile-menu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="gallery.html">Collections</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="store.html">Boutique</a></li>
+      <li><a href="cart.html">Panier</a></li>
+    </ul>
+  </div>
+  
+  <!-- Section Boutique -->
   <main class="store">
     <h2>Boutique en ligne</h2>
     <div class="shop-wrapper">
@@ -30,9 +115,9 @@
         <!-- Produit 1 -->
         <div class="product" data-id="1" data-name="Produit 1" data-price="99">
           <div class="product-images">
-            <img src="gallery_12.jpg" alt="Produit 1 image 1">
-            <img src="gallery_13.jpg" alt="Produit 1 image 2">
-            <img src="gallery_10.jpg" alt="Produit 1 image 3">
+            <img src="gallery_12.jpg" alt="Produit 1 image 1" style="width:100%;">
+            <img src="gallery_13.jpg" alt="Produit 1 image 2" style="width:100%;">
+            <img src="gallery_10.jpg" alt="Produit 1 image 3" style="width:100%;">
           </div>
           <h3>Produit 1</h3>
           <p class="price">€99,00</p>
@@ -41,9 +126,9 @@
         <!-- Produit 2 -->
         <div class="product" data-id="2" data-name="Produit 2" data-price="149">
           <div class="product-images">
-            <img src="gallery_11.jpg" alt="Produit 2 image 1">
-            <img src="gallery_14.jpg" alt="Produit 2 image 2">
-            <img src="gallery_9.jpg" alt="Produit 2 image 3">
+            <img src="gallery_11.jpg" alt="Produit 2 image 1" style="width:100%;">
+            <img src="gallery_14.jpg" alt="Produit 2 image 2" style="width:100%;">
+            <img src="gallery_9.jpg" alt="Produit 2 image 3" style="width:100%;">
           </div>
           <h3>Produit 2</h3>
           <p class="price">€149,00</p>
@@ -52,9 +137,9 @@
         <!-- Produit 3 -->
         <div class="product" data-id="3" data-name="Produit 3" data-price="199">
           <div class="product-images">
-            <img src="gallery_4.jpg" alt="Produit 3 image 1">
-            <img src="gallery_7.jpg" alt="Produit 3 image 2">
-            <img src="gallery_5.jpg" alt="Produit 3 image 3">
+            <img src="gallery_4.jpg" alt="Produit 3 image 1" style="width:100%;">
+            <img src="gallery_7.jpg" alt="Produit 3 image 2" style="width:100%;">
+            <img src="gallery_5.jpg" alt="Produit 3 image 3" style="width:100%;">
           </div>
           <h3>Produit 3</h3>
           <p class="price">€199,00</p>
