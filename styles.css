@@ -54,7 +54,7 @@ header {
 }
 /* Sur mobile, on réduit la hauteur de la section héros */
 body.mobile .hero {
-  height: 40vh; /* hauteur réduite, ajustable selon vos besoins */
+  height: 20vh; /* hauteur réduite, ajustable selon vos besoins */
   position: relative;
   overflow: hidden;
 }
