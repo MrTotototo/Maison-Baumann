@@ -6,13 +6,13 @@
   <title>Maison Baumann - Accueil</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Réinitialisation de base --- */
+    /* Réinitialisation de base */
     body, html {
       margin: 0;
       padding: 0;
     }
     
-    /* --- Navigation & Menu Mobile --- */
+    /* Navigation & Menu Mobile */
     header {
       position: fixed;
       top: 0;
@@ -70,7 +70,7 @@
       z-index: 1040;
     }
     
-    /* --- Section Héros (Desktop et par défaut) --- */
+    /* Section Héros (Desktop) */
     .hero {
       position: relative;
       width: 100%;
@@ -117,25 +117,42 @@
       font-size: 1rem;
     }
     
-    /* --- Adaptations pour Mobile --- */
+    /* Adaptations pour Mobile */
     @media only screen and (max-width: 768px) {
-      /* Appliquer le collage en fond sur toute la section héro */
       .hero {
+        /* Utilisation du collage en fond en plein écran */
         background: url('assets/collage_site.jpg') center center / cover no-repeat;
+        height: 100vh;
+        position: relative;
       }
-      /* Conserver la vidéo en plein écran comme avant */
-      .bg-video {
-        object-fit: cover;
-        object-position: center;
-      }
-      /* Réduire la taille du titre et le centrer sur la vidéo */
-      .hero-title {
-        font-size: 1rem;
+      /* Vidéo centrée en petit au milieu de l'écran */
+      .video-container {
+        width: 80%;
+        height: 40%;
+        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        z-index: 1;
       }
-      /* Masquer le menu classique */
+      .bg-video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+      /* Titre positionné juste au-dessus du conteneur vidéo, centré horizontalement */
+      .hero-title {
+        position: absolute;
+        top: 25%; /* Ajustez cette valeur si nécessaire */
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        color: #fff;
+        z-index: 2;
+        text-align: center;
+        margin: 0;
+      }
       nav .menu {
         display: none;
       }
